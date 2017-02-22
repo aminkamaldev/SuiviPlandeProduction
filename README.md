@@ -1,6 +1,12 @@
 # SuiviPlanProduction
 This application was generated using JHipster 4.0.3, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.0.3](https://jhipster.github.io/documentation-archive/v4.0.3).
 
+## Quickstart
+
+To run the application
+
+mvn spring-boot:run
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
