@@ -1,0 +1,61 @@
+
+<div *ngIf="jobExecution">
+    <h2><span>Job Execution</span> {{jobExecution.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span>Job Id</span></dt>
+        <dd>
+            <span>{{jobExecution.jobId}}</span>
+        </dd>
+        <dt><span>Job Name</span></dt>
+        <dd>
+            <span>{{jobExecution.jobName}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{jobExecution.status}}</span>
+        </dd>
+        <dt><span>Start Time</span></dt>
+        <dd>
+            <span>{{jobExecution.startTime | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>End Time</span></dt>
+        <dd>
+            <span>{{jobExecution.endTime | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Deleted</span></dt>
+        <dd>
+            <span>{{jobExecution.deleted}}</span>
+        </dd>
+        <dt><span>O Date</span></dt>
+        <dd>
+            <span>{{jobExecution.oDate}}</span>
+        </dd>
+        <dt><span>Order Id</span></dt>
+        <dd>
+            <span>{{jobExecution.orderId}}</span>
+        </dd>
+        <dt><span>Average Run Time</span></dt>
+        <dd>
+            <span>{{jobExecution.averageRunTime}}</span>
+        </dd>
+        <dt><span>Rerun Count</span></dt>
+        <dd>
+            <span>{{jobExecution.rerunCount}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'job-execution/'+ jobExecution.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

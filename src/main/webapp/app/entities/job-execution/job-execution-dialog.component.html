@@ -1,0 +1,113 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myJobExecutionLabel">Create or edit a Job Execution</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!jobExecution.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="jobExecution.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_jobId">Job Id</label>
+            <input type="text" class="form-control" name="jobId" id="field_jobId"
+                [(ngModel)]="jobExecution.jobId"
+            required />
+            <div [hidden]="!(editForm.controls.jobId?.dirty && editForm.controls.jobId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.jobId?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_jobName">Job Name</label>
+            <input type="text" class="form-control" name="jobName" id="field_jobName"
+                [(ngModel)]="jobExecution.jobName"
+            required />
+            <div [hidden]="!(editForm.controls.jobName?.dirty && editForm.controls.jobName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.jobName?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                [(ngModel)]="jobExecution.status"
+            required />
+            <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.status?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_startTime">Start Time</label>
+            <div class="input-group">
+                <input id="field_startTime" type="text" class="form-control" name="startTime" ngbDatepicker  #startTimeDp="ngbDatepicker" [(ngModel)]="jobExecution.startTime"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="startTimeDp.open()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_endTime">End Time</label>
+            <div class="input-group">
+                <input id="field_endTime" type="text" class="form-control" name="endTime" ngbDatepicker  #endTimeDp="ngbDatepicker" [(ngModel)]="jobExecution.endTime"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="endTimeDp.open()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_deleted">Deleted</label>
+            <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                [(ngModel)]="jobExecution.deleted"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_oDate">O Date</label>
+            <input type="number" class="form-control" name="oDate" id="field_oDate"
+                [(ngModel)]="jobExecution.oDate"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_orderId">Order Id</label>
+            <input type="text" class="form-control" name="orderId" id="field_orderId"
+                [(ngModel)]="jobExecution.orderId"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_averageRunTime">Average Run Time</label>
+            <input type="number" class="form-control" name="averageRunTime" id="field_averageRunTime"
+                [(ngModel)]="jobExecution.averageRunTime"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_rerunCount">Rerun Count</label>
+            <input type="number" class="form-control" name="rerunCount" id="field_rerunCount"
+                [(ngModel)]="jobExecution.rerunCount"
+             />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

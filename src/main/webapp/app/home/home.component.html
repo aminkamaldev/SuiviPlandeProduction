@@ -1,0 +1,26 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <h1 class="display-4">Bienvenu sur le Suivi du plan de production DALKIA</h1>
+        <p class="lead">Acceuil</p>
+
+        <div [ngSwitch]="isAuthenticated()">
+            <div class="alert alert-success" *ngSwitchCase="true">
+                <span *ngIf="account"> Vous etes connecté en tant que "{{account.login}}". </span>
+                <p>
+                    Partie graphique a venir
+                </p>
+            </div>
+
+
+
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>Vous n'avez pas de compte pour l'accés</span>
+                <a class="alert-link" routerLink="register">Enregistré vous</a>
+                <span> et envoyé un mail à la boucle ma.atm@atos.net pour l'activation de votre compte.</span>
+            </div>
+        </div>
+
+
+    </div>
+</div>
